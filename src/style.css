@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Coda&display=swap');
+.App{
+    background-color: #7ed957;
+    justify-content: center;
+    text-align: center;
+    display: block;
+}
+.button{
+  background-size: 40px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    background-color:transparent;
+    border: none;
+    margin: 3%;
+}
+
+#about{
+    background-image: url(./images/about.png);
+  
+}
+
+#howToPlay{
+    background-image: url(./images/howto.png);
+  
+}
+
+#play{
+    background-image: url(./images/play.png);
+  
+}
+#reset{
+  background-image: url(./images/home.png);
+  
+}
+/* The Modal */
+#aboutModal {
+    display: none; 
+    position: absolute; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 500px;
+    top: 250px;
+    width: 30%; 
+    height: 30%; 
+    background-color: #dbe2b0;
+    margin: auto;
+    padding: 20px;
+    border: 9px solid #066816;
+    font-family: 'Coda', cursive, sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: default;
+    
+  }
+
+#howToModal{
+    display: none; 
+    justify-content: center;
+    position: absolute; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 500px;
+    top: 250px;
+    width: 40%; 
+    height: 50%; 
+    background-color: #dbe2b0;
+    margin: auto;
+    padding: 20px;
+    border: 9px solid #066816;
+    font-family: 'Coda', cursive, sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: default;
+}
+
+/* BOARD*/
+
+#game{
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(-45deg, #23a6d5, #3ce775,  #fc5928, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+  
+  
+}
+
+.grid {
+  max-width: 3000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  position: relative;
+  transition: all .4s linear;
+  transform-style: preserve-3d;
+  margin: 5px;
+  
+}
+
+.card,
+.back,
+.front {
+  height: 150px;
+  width: 150px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front {
+  background: transparent url('./images/cc.gif') no-repeat center center / contain;
+  border-radius: 20px;
+
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.selected {
+transform: rotateY(180deg);
+}
+
+.match .front {
+  background: transparent;
+}
