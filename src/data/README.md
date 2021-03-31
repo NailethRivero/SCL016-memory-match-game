@@ -1,38 +1,8 @@
-# Data (sets de cartas)
+Codecentration es un juego de memoria pensado para un usuario que quiere familiarizarse con algunos elementos básicos del web development, y a su vez practicar el inglés, es por eso que el juego está en inglés.
 
-Este directorio (carpeta) contiene dos fuentes de datos (sets de cartas) que
-podemos usar en el proyecto. Cada set está en una sub-carpeta distinta:
+El juego cuenta con dos partes, la página de inicio y el juego como tal.
 
-* [`pokemon`](./pokemon)
-* [`webdev`](./webdev)
+En la página de inicio se encuentran tres botones: 'about', 'how to play', y 'play'.
+El botón 'about' muestra una breve descripción del juego, 'How to play' muestra las instrucciones del juego, y finalmente 'play' muestra el juego.
 
-Dentro de cada carpeta encontrarás dos archivos: uno con la extensión `.js` y
-otro `.json`. Ambos archivos contienen la misma data; la diferencia es que el
-`.js` lo usaremos a través de un [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import),
-mientras que el `.json` está ahí para opcionalmente cargar la data de forma
-asíncrona con [`fetch()`](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
-
-## ¿Cómo agrego mis propios sets de cartas?
-
-Éstas no son las únicas cartas que podemos usar. Si quieres puedes añadir los
-sets de cartas que consideres para tu aplicación. Si eliges agregar sets de
-cartas te recomendamos mantener la misma estructura de los datos (ambos sets de
-ejemplo usan la misma estructura).
-
-Por ejmplo, imaginemos que queremos agregar un set de cartas de gatitos. Para
-hacernos la vida más fácil, dupliquemos un set existente y modifiquémoslo:
-
-```sh
-# Desde el directorio raíz de la aplicación en el terminal, copiamos
-# recursivamente (con la opción `-r`, ya que se trata de un directorio) el
-# directorio `data/pokemon` a la ruta `data/gatitos`.
-cp -r data/pokemon data/gatitos
-
-# Renombramos los archivos de la carpeta gatitos...
-mv data/gatitos/pokemon.js data/gatitos/gatitos.js
-mv data/gatitos/pokemon.json data/gatitos/gatitos.json
-```
-
-Ahora ya puedes editar el contenido de los archivos de gatitos según tus
-necesidades. Ten en cuenta que puedes cambiar el número de elementos (cartas) en
-cada set si quieres también cambiar la dificultad del juego :wink:.
+La página del juego, muestra un tablero con 20 cartas boca abajo y un botón para reiniciar el juego volviendo al principio. En cuanto al juego, el usuario debe elegir dos cartas, éstas se darán vuelta para verificar si hay una coincidencia, de ser así, las cartas desaparecerán; si no hay coincidencia, las cartas volverán a su posición inicial. La idea es que el usuario consiga los 10 pares de cartas, cuando esto ocurra aparecerá un mensaje indicándole que ha ganado el juego.
