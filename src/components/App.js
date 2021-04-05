@@ -3,7 +3,7 @@
 // JavasSript que contenga el `export` correspondiente...
 //
 import webdev from '../data/webdev/webdev.js';
- console.log(webdev);
+ 
 //
 // O alternativamente podríamos cargar el JSON de forma asíncrona usando
 // `fetch` en el momento que consideremos necesario.
@@ -28,7 +28,7 @@ const App = () => {
   img.style.height = '500px';
   img.style.margin = '0%';
   
-  el.appendChild(home)
+ 
   home.appendChild(img);
 
   // About button          
@@ -102,7 +102,7 @@ span.onclick = function() {
   var howToPara = document.createElement('p');
   howToPara.className = 'htpara';
   howToPara.id = 'howToPara';
-  howToPara.innerHTML = '- On the game board, there are always two identical images.<br/>- Start the game by flipping a card. Then try to find another card that has the same image as the first. <br/>- If you cannot find a pair, the flipped cards will be flipped back with the face down.<br/>- Try to remember these images as it becomes easier to find pairs the longer you play. <br/>- When you find a pair they are removed.';
+  howToPara.innerHTML = '- On the game board, there are always two identical images.<br/>- Start the game by flipping a card. Then try to find another card that has the same image as the first. <br/>- If you cannot find a pair, the flipped cards will be flipped back with the face down.<br/>- Try to remember these images as it becomes easier to find pairs the longer you play. <br/>- When you find a pair they are removed.<br/>-A congratulations message should appear when the player wins.';
   
   howTospan.appendChild(howToPara);
 
@@ -139,7 +139,7 @@ howTospan.onclick = function() {
   
     //CREATE THE BOARD
     var cardsArray = webdev.items;
-    console.log(cardsArray)
+    
     
     var gameGrid = cardsArray.concat(cardsArray).sort(function () {
       return 0.5 - Math.random();
@@ -183,6 +183,7 @@ howTospan.onclick = function() {
       selected.forEach(function (card) {
       card.classList.add('match');
       });
+    
     };
     
     var resetGuesses = function resetGuesses() {
@@ -190,12 +191,14 @@ howTospan.onclick = function() {
       secondGuess = '';
       count = 0;
       previousCard = null;
-    
+
+      
       var selected = document.querySelectorAll('.selected');
       selected.forEach(function (card) {
       card.classList.remove('selected');
       });
     };
+    var matchedCards = 0;  
     
     grid.addEventListener('click', function (event) {
     
@@ -203,31 +206,48 @@ howTospan.onclick = function() {
     
       if (clicked.nodeName === 'section' || clicked === previousCard || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
         return;
-      };
-    
+      }
+      
       if (count < 2) {
         count++;
         if (count === 1) {
           firstGuess = clicked.parentNode.dataset.name;
-          console.log(firstGuess);
+          
           clicked.parentNode.classList.add('selected');
         } else {
           secondGuess = clicked.parentNode.dataset.name;
-          console.log(secondGuess);
+          
           clicked.parentNode.classList.add('selected');
         }
-    
+
         if (firstGuess && secondGuess) {
           if (firstGuess === secondGuess) {
             setTimeout(match, delay);
+            matchedCards++;
+            
+            if (matchedCards== 10){
+              resultDisplay(); 
+            }
           }
           setTimeout(resetGuesses, delay);
         }
+
         previousCard = clicked;
       }
       
-    });
-     
+  });
+   //Completion message
+   function resultDisplay(){
+    var winGame = document.createElement('img')
+    winGame.className = 'winImg';
+    winGame.src = './images/youwon.gif';
+    winGame.style.height = '400px';
+    winGame.style.width = '400px';
+    winGame.style.borderRadius = '20px';
+
+    grid.appendChild(winGame)
+   
+} 
    
 // Show game with play button
     document.querySelectorAll('.App')
@@ -236,8 +256,9 @@ howTospan.onclick = function() {
     howToBtn.style.display= 'none';
     playBtn.style.display= 'none';
     game.style.display = 'block';
-// Reset button
 
+
+// Reset button
 var resetBtn = document.createElement('button');
   resetBtn.className = 'button';
   resetBtn.id = 'reset';
