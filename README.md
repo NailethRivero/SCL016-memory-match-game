@@ -2,7 +2,7 @@
 
 ## CODECENTRATION
 
-![codecentration](src\images\homepage.png)
+![codecentration](src/images/homepage.png)
 
 Codecentration es un juego de memoria creado para una usuaria de 30 años de edad, que quiere adentrarse en el mundo del desarrollo web; por lo tanto, quiere familiarizarse con algunos elementos básicos del web development, y a su vez practicar el inglés, por esta razón el juego está en inglés.
 
